@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | VEECII</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav id="navbar">
+    <a class="nav-logo" href="../index.html">
+      <img src="https://res.cloudinary.com/dcmpmiurf/image/upload/q_auto/f_auto/v1778636000/vc_pro_vyt9ii.jpg" alt="VEECII logo" class="nav-logo-image" />
+      <span>VEECII</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about/index.html">About</a></li>
+      <li><a href="../services/index.html">Services</a></li>
+      <li><a href="../music/index.html">Music</a></li>
+      <li><a href="../into/index.html">What I'm Into</a></li>
+      <li><a href="../press/index.html">Press</a></li>
+      <li><a href="../contact/index.html" class="nav-cta active">BOOK NOW</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <span class="section-label center">Get In Touch</span>
+    <h1>Let's Create Something <em>Timeless</em></h1>
+  </div>
+
+  <section id="contact">
+    <div class="container">
+      <p class="center contact-sub">Available for collaborations and partnerships.</p>
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <a href="mailto:info@veecii.com">info@veecii.com</a>
+          </div>
+          <div class="contact-item">
+          
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Phone (US)</span>
+            <a href="tel:+18552601449">+1 (855) 260-1449</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Socials</span>
+            <div class="social-links">
+              <a href="https://instagram.com/iamveecii_" target="_blank">Instagram</a>
+              <a href="https://twitter.com/iamveecii_" target="_blank">Twitter</a>
+              <a href="https://facebook.com/Victor Ukor" target="_blank">Facebook</a>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mpqkrwvw" method="POST">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required />
+          </div>
+          <div class="form-group">
+            <input type="tel" name="phone" placeholder="Phone number + country's code" required />
+          </div>
+          <div class="form-group">
+            <select name="inquiry">
+              <option value="" disabled selected>Type of Inquiry</option>
+              <option value="consultation">Book a One-on-One Consultation</option>
+              <option value="waitlist">I want to join the waitlist</option>
+              <option value="production">Music Production</option>
+              <option value="songwriting">Songwriting</option>
+              <option value="mixing">Mixing &amp; Mastering</option>
+              <option value="management">Artist Development</option>
+              <option value="collaboration">Collaboration</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary full">Send Message</button>
+          <p class="form-note" id="formNote"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-logo">VEECII</div>
+      <p class="footer-tagline">Excellence without compromise.</p>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About</a>
+        <a href="../services/index.html">Services</a>
+        <a href="../music/index.html">Music</a>
+        <a href="../press/index.html">Press</a>
+        <a href="../contact/index.html">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Victor Ukor (Veecii). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
