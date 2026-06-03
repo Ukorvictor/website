@@ -81,40 +81,17 @@ if (contactForm) {
     });
   }
 
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mpqkrwvw';
+  // Set autoresponse message with proper formatting
+  const autoResponseMsg = document.createElement('input');
+  autoResponseMsg.type = 'hidden';
+  autoResponseMsg.name = 'autoresponse_message';
+  autoResponseMsg.value = 'Hi there,\n\nThanks for getting in touch with VEECII! We\'ve received your message and will get back to you within 24–48 hours.\n\nExcellence without Compromise.\n— Victor | VEECII';
+  contactForm.appendChild(autoResponseMsg);
 
-  contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const note = document.getElementById('formNote');
+  contactForm.addEventListener('submit', function() {
     const btn = this.querySelector('button[type="submit"]');
-
     btn.textContent = 'Sending…';
     btn.disabled = true;
-    note.style.color = '';
-    note.textContent = '';
-
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(this)
-      });
-
-      if (res.ok) {
-        note.textContent = 'Message received — VEECII will be in touch shortly.';
-        this.reset();
-      } else {
-        const data = await res.json();
-        note.style.color = '#f20374';
-        note.textContent = data.errors ? data.errors.map(x => x.message).join(', ') : 'Something went wrong. Please try again.';
-      }
-    } catch {
-      note.style.color = '#f20374';
-      note.textContent = 'Network error — please try again.';
-    } finally {
-      btn.textContent = 'Send Message';
-      btn.disabled = false;
-    }
   });
 }
 
