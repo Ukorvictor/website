@@ -81,17 +81,62 @@ if (contactForm) {
     });
   }
 
-  // Set autoresponse message with proper formatting
+  const formNote = document.getElementById('formNote');
   const autoResponseMsg = document.createElement('input');
   autoResponseMsg.type = 'hidden';
   autoResponseMsg.name = 'autoresponse_message';
   autoResponseMsg.value = 'Hi there,\n\nThanks for getting in touch with VEECII! We\'ve received your message and will get back to you within 24–48 hours.\n\nExcellence without Compromise.\n— Victor | VEECII';
   contactForm.appendChild(autoResponseMsg);
 
-  contactForm.addEventListener('submit', function() {
-    const btn = this.querySelector('button[type="submit"]');
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
+  const clearFormNoteState = () => {
+    if (!formNote) return;
+    formNote.textContent = '';
+    formNote.classList.remove('success', 'error', 'visible');
+  };
+
+  const getFirstName = (name) => {
+    if (!name) return 'there';
+    return name.trim().split(' ')[0] || 'there';
+  };
+
+  const buildThankYouMessage = (firstName) =>
+    `Hi ${firstName},\n\nEvery great project starts with a single step — and you just took yours. Thank you for submitting your consultation request with us!\n\nWe've received all your details and we'll be reaching out within 48 hours to set up time to hear all about your goals, ideas, and what you're looking to create.\n\nWe love this part — getting to know you and your stories behind the projects. So get ready for a great conversation!`;
+
+  contactForm.addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const submitButton = this.querySelector('button[type="submit"]');
+    submitButton.textContent = 'Sending…';
+    submitButton.disabled = true;
+    clearFormNoteState();
+
+    const nameField = this.querySelector('input[name="name"]');
+    const firstName = getFirstName(nameField?.value);
+    const personalizedMessage = buildThankYouMessage(firstName);
+
+    const formData = new FormData(this);
+    formData.set('autoresponse_message', personalizedMessage);
+
+    try {
+      const response = await fetch(this.action, {
+        method: this.method,
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Unable to submit the form.');
+      }
+
+      submitButton.textContent = 'Sent';
+      formNote.textContent = personalizedMessage;
+      formNote.classList.add('success', 'visible');
+      this.reset();
+    } catch (error) {
+      submitButton.textContent = 'Send Message';
+      submitButton.disabled = false;
+      formNote.textContent = 'Sorry, something went wrong. Please try again or email info@veecii.com.';
+      formNote.classList.add('error', 'visible');
+    }
   });
 }
 

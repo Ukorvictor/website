@@ -546,7 +546,35 @@ section { padding: 6rem 0; }
 .form-group textarea:focus { border-color: var(--gold); }
 .form-group textarea { resize: vertical; min-height: 130px; }
 .form-group select option { background: var(--card); }
-.form-note { font-size: 0.85rem; text-align: center; color: var(--gold); margin-top: 0.5rem; }
+.form-note {
+  font-size: 0.95rem;
+  text-align: center;
+  color: var(--gold);
+  margin-top: 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.5rem;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.form-note.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-note.success {
+  background: rgba(255, 197, 1, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 197, 1, 0.35);
+}
+
+.form-note.error {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8b4b4;
+  border: 1px solid rgba(248, 180, 180, 0.35);
+}
 
 /* ── PAGE HEADER (subpages) ── */
 .page-header {
